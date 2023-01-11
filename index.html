@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .calender {
+            width: fit-content;
+            margin: 10px;
+            background-color: rgb(242, 242, 242);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .calender .calender-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calender .calender-header .icons span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #03ebad;
+            font-weight: 700;
+        }
+
+        .calender .calender-body {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px 20px;
+            justify-items: center;
+        }
+
+        .calender-body p {
+            font-size: 14px;
+        }
+
+        .heading {
+            font-weight: 600;
+        }
+
+        .calender-item {
+            display: inline-block;
+            line-height: 35px;
+            text-align: center;
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            transition: 0.5s ease;
+            cursor: pointer;
+        }
+
+        .calender-item:hover {
+            background-color: #03ebad;
+        }
+
+        .active {
+            background-color: #03ebad;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calender">
+        <div class="calender-header">
+            <h2 id="current-date">January 2023</h2>
+            <div class="icons">
+                <span>
+                    < </span>
+                        <span>></span>
+            </div>
+        </div>
+        <div class="calender-body">
+            <p class="heading">SUN</p>
+            <p class="heading">MON</p>
+            <p class="heading">TUE</p>
+            <p class="heading">WED</p>
+            <p class="heading">THU</p>
+            <p class="heading">FRI</p>
+            <p class="heading">SAT</p>
+            <p class="calender-item">1</p>
+            <p class="calender-item">2</p>
+            <p class="calender-item">3</p>
+            <p class="calender-item">4</p>
+            <p class="calender-item">5</p>
+            <p class="calender-item">6</p>
+            <p class="calender-item">7</p>
+            <p class="calender-item">8</p>
+            <p class="calender-item">9</p>
+            <p class="calender-item">10</p>
+            <p class="calender-item">11</p>
+            <p class="calender-item">12</p>
+            <p class="calender-item">13</p>
+            <p class="calender-item">14</p>
+            <p class="calender-item">15</p>
+            <p class="calender-item">16</p>
+            <p class="calender-item">17</p>
+            <p class="calender-item">18</p>
+            <p class="calender-item">19</p>
+            <p class="calender-item">20</p>
+            <p class="calender-item">21</p>
+            <p class="calender-item">22</p>
+            <p class="calender-item">23</p>
+            <p class="calender-item">24</p>
+            <p class="calender-item">25</p>
+            <p class="calender-item">26</p>
+            <p class="calender-item">27</p>
+            <p class="calender-item">28</p>
+            <p class="calender-item">29</p>
+            <p class="calender-item">30</p>
+            <p class="calender-item">31</p>
+        </div>
+    </div>
+    <script>
+        const calenderBody = document.querySelector('.calender-body');
+        const weekDays = document.querySelectorAll('.heading');
+        const getWeekDayNum = (weekname) => {
+            switch (weekname) {
+                case 'SUN':
+                    return 0;
+
+                case 'MON':
+                    return 1;
+
+                case 'TUE':
+                    return 2;
+
+                case 'WED':
+                    return 3;
+
+                case 'THU':
+                    return 4;
+
+                case 'FRI':
+                    return 5;
+
+                case 'SAT':
+                    return 6;
+
+            }
+        }
+        const getMonthName = (monthnum) => {
+            switch (monthnum) {
+                case 0:
+                    return 'January'
+                case 1:
+                    return 'February'
+                case 2:
+                    return 'March'
+                case 3:
+                    return 'April'
+                case 4:
+                    return 'May'
+                case 5:
+                    return 'June'
+                case 6:
+                    return 'July'
+                case 7:
+                    return 'August'
+                case 8:
+                    return 'September'
+                case 9:
+                    return 'October'
+                case 10:
+                    return 'November'
+                case 11:
+                    return 'December'
+            }
+        }
+        const date = new Date();
+        const currentDate = document.getElementById('current-date');
+        const calenderItems = document.querySelectorAll('.calender-item');
+        currentDate.innerHTML = `${getMonthName(date.getMonth())}, ${date.getFullYear()}`;
+        for (item of calenderItems) {
+            if (item.innerHTML == date.getDate()) item.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
